@@ -16,10 +16,6 @@ function MovieList() {
     }, []);
 
     const handleClick = (movieId) => {
-        dispatch({
-            type: 'GET_MOVIE_DETAILS',
-            payload: movieId
-        });
         history.push(`/details/${movieId}`)
     }
 
