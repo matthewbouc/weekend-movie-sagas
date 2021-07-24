@@ -4,11 +4,12 @@ import MovieList from '../MovieList/MovieList'
 import MovieDetails from '../MovieDetails/MovieDetails';
 import Header from '../Header/Header';
 import AddMovie from '../AddMovie/AddMovie';
+import { CssBaseline } from '@material-ui/core';
 
 function App() {
   return (
     <div className="App">
-    <Router> 
+      <Router>
         <Header />
         <Route path="/" exact>
           <MovieList />
@@ -18,7 +19,6 @@ function App() {
           <Route path="/details/:movieId" children={<MovieDetails />} exact/>
         </Switch>
 
-        {/* Add Movie page */}
         <Route path="/addMovie" exact>
           <AddMovie />
         </Route>
