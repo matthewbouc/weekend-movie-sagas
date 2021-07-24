@@ -1,6 +1,14 @@
+import { AppBar, Toolbar, Typography } from "@material-ui/core"
+import Navigation from "../Navigation/Navigation"
+
 function Header() {
     return(
-        <h1>The Movies Saga!</h1>
+        <AppBar>
+            <Toolbar>
+                <Navigation />
+                <Typography>The Movies Saga!</Typography>
+            </Toolbar>
+        </AppBar>
     )
 }
 

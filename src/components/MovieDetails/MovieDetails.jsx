@@ -13,9 +13,10 @@ function MovieDetails() {
     return (
         <Container>
             <Card>
+                <h2>{movieDetails.title}</h2>
                 <img src={movieDetails.poster} />
             </Card>
-            <Typography>{movieDetails.title}, {movieDetails.description}</Typography>
+            <Typography>{movieDetails.description}</Typography>
         </Container>
       );
 }

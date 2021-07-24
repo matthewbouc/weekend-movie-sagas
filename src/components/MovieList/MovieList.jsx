@@ -27,6 +27,7 @@ function MovieList() {
                             <img 
                             src={movie.poster} 
                             alt={movie.title}
+                            className="moviePoster"
                             onClick={()=>history.push(`/details/${movie.id}`)}
                             />
                         </Card>
