@@ -15,6 +15,14 @@ function MovieList() {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
 
+    const handleClick = (movieId) => {
+        dispatch({
+            type: 'GET_MOVIE_DETAILS',
+            payload: movieId
+        });
+        history.push(`/details/${movieId}`)
+    }
+
     return (
         <main>
             <h1>MovieList</h1>
@@ -28,7 +36,7 @@ function MovieList() {
                             src={movie.poster} 
                             alt={movie.title}
                             className="moviePoster"
-                            onClick={()=>history.push(`/details/${movie.id}`)}
+                            onClick={()=>handleClick(movie.id)}
                             />
                         </Card>
                     );

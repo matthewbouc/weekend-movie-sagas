@@ -16,10 +16,22 @@ router.get('/', (req, res) => {
 
 });
 
+// GET route pulls in Movie Details and Genres from database
 router.get('/:id', (req, res) => {
-  const query = `SELECT * FROM movies WHERE id=$1;`;
+  const query = `
+  SELECT movies.title, movies.poster, movies.description,
+      ARRAY(
+      SELECT genres.name FROM genres
+      JOIN movies_genres ON genre_id = genres.id
+      JOIN movies ON movie_id = movies.id
+      WHERE movies.id = $1
+      GROUP BY genres.name
+      ) AS genres
+    FROM movies
+    WHERE movies.id=$1;`;
   pool.query(query, [req.params.id])
   .then( result => {
+    console.log('results GET', result.rows[0]);
     res.send(result.rows[0]);
   }).catch( error => {
     console.log('ERROR: Getting Movie Details from DB,', error);
