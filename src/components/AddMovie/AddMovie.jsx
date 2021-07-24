@@ -25,7 +25,18 @@ function AddMovie() {
                 genresSelected.push(key)
             }
         }
-        console.log(genresSelected);
+        dispatch({
+            type: 'ADD_NEW_MOVIE',
+            payload: {
+                title: movieTitle,
+                poster: movieUrl,
+                description: movieDescription,
+                genre: genresSelected
+            }
+        })
+        // console.log(genresSelected);
+        
+
     }
 
     return(
