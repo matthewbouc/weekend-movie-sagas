@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import MenuIcon from '@material-ui/icons/Menu';
 import { useHistory } from 'react-router-dom';
 
 export default function SimpleMenu() {
@@ -20,7 +21,7 @@ export default function SimpleMenu() {
     return (
     <div>
         <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleOpen}>
-        Navigation
+        <MenuIcon />
         </Button>
         <Menu
         id="simple-menu"

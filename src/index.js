@@ -44,6 +44,14 @@ function* fetchMovieDetails(action) {
 
 // ********** REDUCERS ********** //
 
+// Used to store movie details for specific movie
+const movieDetails = (state = {}, action) => {
+    if ( action.type === 'SET_MOVIE_DETAILS'){
+        return action.payload
+    }
+    return state
+}
+
 
 // Used to store movies returned from the server
 const movies = (state = [], action) => {
@@ -76,6 +84,7 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
+        movieDetails,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
