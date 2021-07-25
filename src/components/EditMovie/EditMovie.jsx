@@ -1,10 +1,27 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { TextField, Button } from "@material-ui/core";
+import { TextField, Button, makeStyles, Container, Grid } from "@material-ui/core";
 import GenreSelect from "../AddMovie/GenreSelect";
 
+const useStyles = makeStyles((theme) => ({
+    textInput: {
+        color: "white",
+        backgroundClip: "white",
+    },
+    container: {
+        display: 'flex',
+        flexDirection: 'column',
+        backgroundColor: '#F2D600',
+        marginTop: theme.spacing(4),
+        marginLeft: theme.spacing(4),
+        marginRight: theme.spacing(4),
+    },
+
+}))
+
 function EditMovie() {
+    const classes = useStyles();
     const {movieId} = useParams();
     const dispatch = useDispatch();
     const movieDetails = useSelector(store => store.movieDetails);
@@ -57,13 +74,13 @@ function EditMovie() {
 
 
     return(
-        <form>
-        <TextField value={movieTitle} onChange={(event) => setMovieTitle(event.target.value)} variant="filled" label="Movie Title"/>
-        <TextField value={movieDescription} onChange={(event) => setMovieDescription(event.target.value)} variant="filled" label="Movie Description"/>
-        <TextField value={movieUrl} onChange={(event) => setMovieUrl(event.target.value)} variant="filled" label="Movie URL"/>
+        <Container className={classes.container}>
+        <TextField className={classes.textInput} value={movieTitle} onChange={(event) => setMovieTitle(event.target.value)} variant="filled" label="Movie Title"/>
+        <TextField className={classes.textInput} value={movieUrl} onChange={(event) => setMovieUrl(event.target.value)} variant="filled" label="Movie URL"/>
+        <TextField className={classes.textInput} value={movieDescription} onChange={(event) => setMovieDescription(event.target.value)} variant="filled" label="Movie Description"/>
         {/* <GenreSelect genreArray={genreArray} setGenreArray={setGenreArray}/> */}
-        <Button variant="contained" color="primary" onClick={handleSubmit}>Edit Movie</Button>
-    </form>
+        <Button variant="contained" color="primary" onClick={handleSubmit}>Submit Edit</Button>
+        </Container>
     )
 }
 

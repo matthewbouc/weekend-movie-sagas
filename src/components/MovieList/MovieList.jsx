@@ -9,6 +9,7 @@ import { CardContent, CardMedia, Container, makeStyles, Typography } from '@mate
 const useStyles = makeStyles((theme) => ({
     cardPoster: {
         height: 333,
+        cursor: "pointer"
     },
     cardGrid: {
         paddingTop: theme.spacing(4),
@@ -30,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
     heading: {
         paddingBottom: theme.spacing(2),
         color: "#F2D600",
+        // font: theme.typography.fontFamily[0],
     }
   }));
 
@@ -49,7 +51,7 @@ function MovieList() {
     }
 
     return (
-        <Container className={classes.cardGrid} maxWidth="md">
+        <Container justify='center' className={classes.cardGrid} maxWidth="md">
             <Typography className={classes.heading} variant="h2">MovieList</Typography>
             <Grid container spacing={4}>
                 {movies.map(movie => {

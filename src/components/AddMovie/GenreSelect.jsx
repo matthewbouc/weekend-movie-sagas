@@ -40,7 +40,7 @@ function GenreSelect({genreArray, setGenreArray}) {
 
     return (
     <div>
-        <Button onClick={handleClickOpen}>Open select dialog</Button>
+        <Button color="secondary" variant="contained" onClick={handleClickOpen}>Open select dialog</Button>
         <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Fill the form</DialogTitle>
         <DialogContent>
@@ -61,9 +61,6 @@ function GenreSelect({genreArray, setGenreArray}) {
             
         </DialogContent>
         <DialogActions>
-            <Button onClick={handleClose} color="primary">
-            Cancel
-            </Button>
             <Button onClick={handleClose} color="primary">
             Ok
             </Button>
