@@ -4,18 +4,34 @@ import './MovieList.css'
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import { useHistory } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core';
+import { CardContent, CardMedia, Container, makeStyles, Typography } from '@material-ui/core';
 
-const useStyles = makeStyles ({
-    root: {
-      width: 300,
-      backgroundColor: "black",
-      color: "white",
+const useStyles = makeStyles((theme) => ({
+    cardPoster: {
+        height: 333,
     },
-    media: {
-      height: 300,
+    cardGrid: {
+        paddingTop: theme.spacing(4),
+        paddingBottom: theme.spacing(8),
     },
-  });
+    card: {
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        backgroundColor: "#121212",
+        color: "white",
+    },
+    cardMedia: {
+        paddingTop: '10%', // 16:9
+    },
+    cardContent: {
+        flexGrow: 1,
+      },
+    heading: {
+        paddingBottom: theme.spacing(2),
+        color: "#F2D600",
+    }
+  }));
 
 function MovieList() {
     const classes = useStyles();
@@ -33,29 +49,31 @@ function MovieList() {
     }
 
     return (
-        <main>
-            <h1>MovieList</h1>
-            <section className="movies">
-            <Grid container>
+        <Container className={classes.cardGrid} maxWidth="md">
+            <Typography className={classes.heading} variant="h2">MovieList</Typography>
+            <Grid container spacing={4}>
                 {movies.map(movie => {
                     return (
-                        <Card className={classes.root} key={movie.id}>
-
-                            <h3>{movie.title}</h3>
-
-                            <img 
-                            src={movie.poster} 
-                            alt={movie.title}
-                            className={classes.media}
-                            onClick={()=>handleClick(movie.id)}
-                            />
-
-                        </Card>
+                        <Grid item key={movie.id} xs={12} sm={6} md={4}>
+                            <Card className={classes.card}>
+                                
+                                <CardMedia className={classes.cardMedia}>
+                                <img 
+                                src={movie.poster} 
+                                alt={movie.title}
+                                className={classes.cardPoster}
+                                onClick={()=>handleClick(movie.id)}
+                                />
+                                </CardMedia>
+                                <CardContent className={classes.cardContent}>
+                                    <h3>{movie.title}</h3>
+                                </CardContent>
+                            </Card>
+                        </Grid>
                     );
                 })}
             </Grid>
-            </section>
-        </main>
+        </Container>
 
     );
 }

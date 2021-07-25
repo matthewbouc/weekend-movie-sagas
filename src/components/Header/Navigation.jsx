@@ -4,8 +4,16 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuIcon from '@material-ui/icons/Menu';
 import { useHistory } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles((theme) => ({
+    menuIcon: {
+        color: "white",
+    }
+  }));
 
 export default function SimpleMenu() {
+    const classes = useStyles();
     const history = useHistory();
     const [anchorEl, setAnchorEl] = useState(null);
 
@@ -21,7 +29,7 @@ export default function SimpleMenu() {
     return (
     <div>
         <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleOpen}>
-        <MenuIcon color="secondary" />
+        <MenuIcon className={classes.menuIcon}/>
         </Button>
         <Menu
         id="simple-menu"

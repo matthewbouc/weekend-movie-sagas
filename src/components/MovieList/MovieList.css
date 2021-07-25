@@ -1,7 +1,7 @@
-.movies {
+/* .movies {
     display : flex;
     flex-wrap: wrap;
-}
+} */
 
 .moviePoster {
     cursor: pointer;
