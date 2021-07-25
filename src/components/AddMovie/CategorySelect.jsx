@@ -49,9 +49,10 @@ function GenreSelect({genreArray, setGenreArray}) {
             <FormGroup>
         {genres.map(genre=>{
             return (
-                <FormControlLabel key={genre.id}
-                control={<Checkbox onChange={handleChange} name={genre.name} />}
-                label={genre.name}
+                <FormControlLabel
+                    key={genre.id}
+                    control={<Checkbox checked={genreArray[genre.name] || false} onChange={handleChange} name={genre.name} />}
+                    label={genre.name}
                 />
             )
             })}
