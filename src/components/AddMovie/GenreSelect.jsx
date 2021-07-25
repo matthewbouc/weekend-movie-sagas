@@ -18,6 +18,26 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     minWidth: 120,
   },
+  genreButton: {
+    width: 200,
+    marginTop: 20,
+    marginBottom: 20,
+    color: 'white',
+    // backgroundColor: '#0040cc',
+    // '&:hover': {
+    //     backgroundColor: '#0062cc',
+    //     borderColor: '#0062cc',
+    //     boxShadow: 'none',
+    //   },
+    // '&:active': {
+    //     boxShadow: 'none',
+    //     backgroundColor: '#0062cc',
+    //     borderColor: '#005cbf',
+    //   },
+    // '&:focus': {
+    //     boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
+    //   },
+}
 }));
 
 function GenreSelect({genreArray, setGenreArray}) {
@@ -40,12 +60,11 @@ function GenreSelect({genreArray, setGenreArray}) {
 
     return (
     <div>
-        <Button color="secondary" variant="contained" onClick={handleClickOpen}>Open select dialog</Button>
+        <Button className={classes.genreButton} color="primary" variant="contained" onClick={handleClickOpen}>Add Genres</Button>
         <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Fill the form</DialogTitle>
+        <DialogTitle>Select All Genres</DialogTitle>
         <DialogContent>
         <FormControl component="fieldset" className={classes.formControl}>
-            <FormLabel component="legend">Assign responsibility</FormLabel>
             <FormGroup>
         {genres.map(genre=>{
             return (

@@ -6,8 +6,9 @@ import { useHistory, useParams } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     description: {
+        width: 1000,
         color: "white",
-
+        paddingTop: 10,
     },
     card: {
         height: '100%',
@@ -21,12 +22,14 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     container: {
-        display: 'flex',
-        justifyContent: 'center',
-        flexDirection: 'column',
-        alignItems: 'center',
         marginBottom: theme.spacing(8),
-
+        justifyContent: 'center',
+    },
+    genres: {
+        color: '#F2D600',
+        justifyContent: 'space-around',
+        paddingTop: 20,
+        paddingBottom: 20,
     },
     poster: {
         height: 500,
@@ -54,8 +57,8 @@ function MovieDetails() {
     }
 
     return (
-        <Container className={classes.container}>
-            <Grid>
+        <Container>
+            <Grid container className={classes.container} >
             <Card className={classes.card}>
                 <CardContent>
                 <h2>{movieDetails.title}</h2>
@@ -64,12 +67,12 @@ function MovieDetails() {
                 <img src={movieDetails.poster} className={classes.poster} />
                 </CardMedia>
             </Card>
-            <Box>
             <Typography className={classes.description}>{movieDetails.description}</Typography>
+            <Grid container className={classes.genres}>
             {movieDetails.genres.map(genre => {
-                return <p key={genre}>{genre}</p>
+                return <Typography key={genre}>{genre}</Typography>
             })}
-            </Box>
+            </Grid>
             <Button variant="contained" color="primary" onClick={()=>history.push(`/details/edit/${movieId}`)}>
                 Edit Movie
             </Button>

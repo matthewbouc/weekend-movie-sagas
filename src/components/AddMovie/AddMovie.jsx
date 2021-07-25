@@ -17,6 +17,26 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: theme.spacing(4),
         marginRight: theme.spacing(4),
     },
+    addMovieButton: {
+        margin: 'auto',
+        width: 200,
+        marginBottom: 20,
+        color: 'white',
+        // backgroundColor: '#0062cc',
+        // '&:hover': {
+        //     backgroundColor: '#0050cc',
+        //     borderColor: '#0058cc',
+        //     boxShadow: 'none',
+        //   },
+        // '&:active': {
+        //     boxShadow: 'none',
+        //     backgroundColor: '#0062cc',
+        //     borderColor: '#005cbf',
+        //   },
+        // '&:focus': {
+        //     boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
+        //   },
+    }
 
 }))
 
@@ -66,7 +86,7 @@ function AddMovie() {
             <TextField value={movieDescription} onChange={(event) => setMovieDescription(event.target.value)} variant="filled" label="Movie Description"/>
             <TextField value={movieUrl} onChange={(event) => setMovieUrl(event.target.value)} variant="filled" label="Movie URL"/>
             <GenreSelect genreArray={genreArray} setGenreArray={setGenreArray}/>
-            <Button variant="contained" color="primary" onClick={handleSubmit}>Add Movie</Button>
+            <Button color="primary" variant="contained" className={classes.addMovieButton} onClick={handleSubmit}>Add Movie</Button>
 
         </Container>
     )

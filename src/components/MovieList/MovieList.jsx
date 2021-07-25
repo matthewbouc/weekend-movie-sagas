@@ -51,8 +51,8 @@ function MovieList() {
     }
 
     return (
-        <Container justify='center' className={classes.cardGrid} maxWidth="md">
-            <Typography className={classes.heading} variant="h2">MovieList</Typography>
+        <Container className={classes.cardGrid} maxWidth="md">
+            <Typography className={classes.heading} variant="h3">Movie List</Typography>
             <Grid container spacing={4}>
                 {movies.map(movie => {
                     return (
