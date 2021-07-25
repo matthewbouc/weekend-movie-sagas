@@ -17,6 +17,7 @@ function* rootSaga() {
     yield takeEvery('GET_MOVIE_DETAILS', fetchMovieDetails);
     yield takeEvery('GET_GENRES', fetchAllGenres);
     yield takeEvery('ADD_NEW_MOVIE', addNewMovie);
+    yield takeEvery('EDIT_MOVIE', editExistingMovie);
 }
 
 function* addNewMovie(action){
@@ -25,6 +26,15 @@ function* addNewMovie(action){
         yield put({type: 'FETCH_MOVIES'});
     } catch (error){
         console.log('Error POSTing new movie', error);
+    }
+}
+
+function* editExistingMovie(action){
+    try{
+        yield call(axios.put, `/api/movie`, action.payload);
+        yield put({type: 'FETCH_MOVIES'})
+    } catch (error) {
+        console.log ('Error PUTting movie edits', error);
     }
 }
 

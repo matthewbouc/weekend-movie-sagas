@@ -1,5 +1,5 @@
 import { AppBar, Toolbar, Typography } from "@material-ui/core"
-import Navigation from "../Navigation/Navigation"
+import Navigation from "./Navigation"
 
 function Header() {
     return(

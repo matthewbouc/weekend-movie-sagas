@@ -4,7 +4,7 @@ import MovieList from '../MovieList/MovieList'
 import MovieDetails from '../MovieDetails/MovieDetails';
 import Header from '../Header/Header';
 import AddMovie from '../AddMovie/AddMovie';
-import { CssBaseline } from '@material-ui/core';
+import EditMovie from '../EditMovie/EditMovie';
 
 function App() {
   return (
@@ -18,6 +18,10 @@ function App() {
         <Switch>
           <Route path="/details/:movieId" children={<MovieDetails />} exact/>
         </Switch>
+        
+        <Route path="/details/edit/:movieId" exact>
+          <EditMovie />
+        </Route>
 
         <Route path="/addMovie" exact>
           <AddMovie />

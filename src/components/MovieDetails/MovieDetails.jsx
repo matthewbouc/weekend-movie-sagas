@@ -1,10 +1,11 @@
-import { Card, CardMedia, Container, Typography } from "@material-ui/core";
-import { useEffect, useState } from "react"
+import { Button, Card, CardMedia, Container, Typography } from "@material-ui/core";
+import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 function MovieDetails() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const {movieId} = useParams();
     const movieDetails = useSelector(store => store.movieDetails);
     console.log('movieDetails reducer:', movieDetails);
@@ -30,6 +31,9 @@ function MovieDetails() {
             {movieDetails.genres.map(genre => {
                 return <p key={genre}>{genre}</p>
             })}
+            <Button variant="contained" color="primary" onClick={()=>history.push(`/details/edit/${movieId}`)}>
+                Edit Movie
+            </Button>
         </Container>
       );
 }

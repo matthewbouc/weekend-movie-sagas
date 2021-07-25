@@ -1,7 +1,7 @@
 import { Button, TextField } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import GenreSelect from "./CategorySelect";
+import GenreSelect from "./GenreSelect";
 
 
 function AddMovie() {

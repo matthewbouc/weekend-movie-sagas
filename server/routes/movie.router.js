@@ -97,4 +97,21 @@ router.post('/', (req, res) => {
   })
 })
 
-module.exports = router;
+
+router.put('/', (req, res) => { 
+  const movie = req.body
+  const movieQuery = `
+  UPDATE movies
+  SET title=$1, poster=$2, description=$3
+  WHERE id=$4;`;
+  pool.query(movieQuery,[movie.title, movie.poster, movie.description, movie.id])
+  .then(response => {
+    console.log('first order put success');
+    res.sendStatus(202);
+  }).catch(error => {
+    console.log('failed first order put',error);
+    res.sendStatus(500);
+  });
+});
+
+module.exports = router
