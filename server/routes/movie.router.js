@@ -64,6 +64,8 @@ router.post('/', (req, res) => {
       GROUP BY genres.id));`;
       // VALUES  ($1, $2);`;
       
+
+      // Haven't quite learned async query. Just guessing here, but it works
       async function poolQuery(){
         for (element of req.body.genres){
           console.log(req.body.genres);
@@ -71,21 +73,21 @@ router.post('/', (req, res) => {
           console.log(createdMovieId);
           // SECOND QUERY ADDS GENRE FOR THAT NEW MOVIE
           pool.query(insertMovieGenreQuery, [createdMovieId, element])
-          .then(result => {
-            //Now that both are done, send back success!
-            // res.sendStatus(201);
-          }).catch(err => {
-            // catch for second query
-            console.log(err);
-            res.sendStatus(500)
-          })
+          // .then(result => {
+          //   //Now that both are done, send back success!
+          //   res.sendStatus(201);
+          // }).catch(err => {
+          //   // catch for second query
+          //   console.log(err);
+          //   res.sendStatus(500)
+          // })
         }
       };
-
+      // calling the async query above
       poolQuery().then((response)=>{
         res.sendStatus(201)
       }).catch(error => {
-        res.sendStatus(505)
+        res.sendStatus(500)
       })
 
 // Catch for first query

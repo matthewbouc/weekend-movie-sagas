@@ -34,6 +34,10 @@ function AddMovie() {
                 genres: genresSelected
             }
         })
+        setMovieTitle('');
+        setMovieDescription('');
+        setMovieUrl('');
+        setGenreArray([]);
         // console.log(genresSelected);
         
 
