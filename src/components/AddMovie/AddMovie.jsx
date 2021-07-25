@@ -31,7 +31,7 @@ function AddMovie() {
                 title: movieTitle,
                 poster: movieUrl,
                 description: movieDescription,
-                genre: genresSelected
+                genres: genresSelected
             }
         })
         // console.log(genresSelected);
