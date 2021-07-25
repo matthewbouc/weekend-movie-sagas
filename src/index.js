@@ -10,6 +10,8 @@ import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put, call } from 'redux-saga/effects';
 import axios from 'axios';
+import ThemeProvider from '@material-ui/styles/ThemeProvider';
+import theme from './components/Theme/theme';
 
 // Create the rootSaga generator function
 function* rootSaga() {
@@ -132,7 +134,9 @@ sagaMiddleware.run(rootSaga);
 ReactDOM.render(
     // <React.StrictMode>
         <Provider store={storeInstance}>
+        <ThemeProvider theme={theme}>
         <App />
+        </ThemeProvider>
         </Provider>,
     // </React.StrictMode>,
     document.getElementById('root')

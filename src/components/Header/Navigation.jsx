@@ -21,7 +21,7 @@ export default function SimpleMenu() {
     return (
     <div>
         <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleOpen}>
-        <MenuIcon />
+        <MenuIcon color="secondary" />
         </Button>
         <Menu
         id="simple-menu"

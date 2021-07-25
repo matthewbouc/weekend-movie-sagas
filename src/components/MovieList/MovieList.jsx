@@ -4,8 +4,21 @@ import './MovieList.css'
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import { useHistory } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles ({
+    root: {
+      width: 300,
+      backgroundColor: "black",
+      color: "white",
+    },
+    media: {
+      height: 300,
+    },
+  });
 
 function MovieList() {
+    const classes = useStyles();
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -26,14 +39,17 @@ function MovieList() {
             <Grid container>
                 {movies.map(movie => {
                     return (
-                        <Card key={movie.id}>
+                        <Card className={classes.root} key={movie.id}>
+
                             <h3>{movie.title}</h3>
+
                             <img 
                             src={movie.poster} 
                             alt={movie.title}
-                            className="moviePoster"
+                            className={classes.media}
                             onClick={()=>handleClick(movie.id)}
                             />
+
                         </Card>
                     );
                 })}
