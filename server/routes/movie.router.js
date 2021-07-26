@@ -23,8 +23,7 @@ router.get('/:id', (req, res) => {
       ARRAY(
       SELECT genres.name FROM genres
       JOIN movies_genres ON genre_id = genres.id
-      JOIN movies ON movie_id = movies.id
-      WHERE movies.id = $1
+      WHERE movie_id = $1
       GROUP BY genres.name
       ) AS genres
     FROM movies
