@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
         width: 200,
         marginBottom: 20,
         color: 'white',
+        // Button styling
         // backgroundColor: '#0062cc',
         // '&:hover': {
         //     backgroundColor: '#0050cc',
@@ -41,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function AddMovie() {
+
     const classes = useStyles();
     const dispatch = useDispatch();
 
@@ -55,6 +57,7 @@ function AddMovie() {
         })
     })
 
+    // On submit, create an array of genres to be passed with movie details
     const handleSubmit = () => {
         let genresSelected = []
         for (const key in genreArray){

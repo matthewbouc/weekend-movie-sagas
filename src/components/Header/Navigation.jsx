@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
+// Standard material ui navigation menu
 export default function SimpleMenu() {
     const classes = useStyles();
     const history = useHistory();

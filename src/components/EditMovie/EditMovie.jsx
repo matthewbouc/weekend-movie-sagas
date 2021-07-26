@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { TextField, Button, makeStyles, Container, Grid } from "@material-ui/core";
-import GenreSelect from "../AddMovie/GenreSelect";
+import { TextField, Button, makeStyles, Container } from "@material-ui/core";
+// import GenreSelect from "../AddMovie/GenreSelect";
 
 const useStyles = makeStyles((theme) => ({
     textInput: {
@@ -17,10 +17,11 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: theme.spacing(4),
         marginRight: theme.spacing(4),
     },
-
 }))
 
+
 function EditMovie() {
+    
     const classes = useStyles();
     const {movieId} = useParams();
     const dispatch = useDispatch();
@@ -34,6 +35,8 @@ function EditMovie() {
         getMovieDetails();
     }, [])
 
+
+    // Removed functionality for genre editing - needs extra work for deleting,adding
     const getMovieDetails = () => {
         dispatch({
             type: 'GET_MOVIE_DETAILS',
@@ -69,8 +72,6 @@ function EditMovie() {
         setMovieUrl('');
         // setGenreArray([]);
     }
-
-
 
 
     return(

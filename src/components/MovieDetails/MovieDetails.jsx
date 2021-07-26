@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardContent, CardMedia, Container, Grid, GridListTileBar, makeStyles, Typography } from "@material-ui/core";
+import {  Button, Card, CardContent, CardMedia, Container, Grid, makeStyles, Typography } from "@material-ui/core";
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
@@ -49,6 +49,7 @@ function MovieDetails() {
         getMovieDetails();
     }, [])
 
+    // useParams() to GET movie details
     const getMovieDetails = () => {
         dispatch({
             type: 'GET_MOVIE_DETAILS',
@@ -69,9 +70,12 @@ function MovieDetails() {
             </Card>
             <Typography className={classes.description}>{movieDetails.description}</Typography>
             <Grid container className={classes.genres}>
+
+            {/* Map through genre array to display all genres */}
             {movieDetails.genres.map(genre => {
                 return <Typography key={genre}>{genre}</Typography>
             })}
+
             </Grid>
             <Button variant="contained" color="primary" onClick={()=>history.push(`/details/edit/${movieId}`)}>
                 Edit Movie

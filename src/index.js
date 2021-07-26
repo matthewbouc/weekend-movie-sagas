@@ -14,13 +14,20 @@ import axios from 'axios';
 
 // Create the rootSaga generator function
 function* rootSaga() {
-    yield takeEvery('FETCH_MOVIES', fetchAllMovies);
-    yield takeEvery('GET_MOVIE_DETAILS', fetchMovieDetails);
-    yield takeEvery('GET_GENRES', fetchAllGenres);
-    yield takeEvery('ADD_NEW_MOVIE', addNewMovie);
-    yield takeEvery('EDIT_MOVIE', editExistingMovie);
+    yield movieSaga()
+    // yield imdbSaga() // If time, bring in imdb database; movieSaga will become "favorites" database
 }
 
+// generator function for sagas related to local movie database.
+function* movieSaga() {
+    yield takeEvery('FETCH_MOVIES', fetchAllMovies);
+    yield takeEvery('ADD_NEW_MOVIE', addNewMovie);
+    yield takeEvery('EDIT_MOVIE', editExistingMovie);
+    yield takeEvery('GET_MOVIE_DETAILS', fetchMovieDetails);
+    yield takeEvery('GET_GENRES', fetchAllGenres);
+}
+
+// POST new movie to database
 function* addNewMovie(action){
     try{
         yield call(axios.post, '/api/movie', action.payload);
@@ -30,6 +37,7 @@ function* addNewMovie(action){
     }
 }
 
+// PUT movie details to database
 function* editExistingMovie(action){
     try{
         yield call(axios.put, `/api/movie`, action.payload);
@@ -39,8 +47,20 @@ function* editExistingMovie(action){
     }
 }
 
+// get all genres from the DB
+function* fetchAllGenres() {
+    try {
+        const genres = yield axios.get('/api/genre');
+        yield put({ type: 'SET_GENRES', payload: genres.data });
+
+    } catch {
+        console.log('get all error');
+    }    
+}
+
+
+// GET all movie information from database
 function* fetchAllMovies() {
-    // get all movies from the DB
     try {
         const movies = yield axios.get('/api/movie');
         console.log('get all:', movies.data);
@@ -51,9 +71,8 @@ function* fetchAllMovies() {
     }    
 }
 
-
+// GET single movie details from DB
 function* fetchMovieDetails(action) {
-    // GET single movie details from DB
     console.log('id is now: ', action.payload);
     try {
         const movie = yield axios.get(`api/movie/${action.payload}`);
@@ -63,16 +82,7 @@ function* fetchMovieDetails(action) {
     }
 }
 
-function* fetchAllGenres() {
-    // get all genres from the DB
-    try {
-        const genres = yield axios.get('/api/genre');
-        yield put({ type: 'SET_GENRES', payload: genres.data });
 
-    } catch {
-        console.log('get all error');
-    }    
-}
 
 
 
@@ -131,7 +141,7 @@ const storeInstance = createStore(
 sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
-    // <React.StrictMode>
+    // <React.StrictMode> // Causing error with some other functionality
         <Provider store={storeInstance}>
             <App />
         </Provider>,

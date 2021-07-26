@@ -6,6 +6,8 @@ import Card from '@material-ui/core/Card';
 import { useHistory } from 'react-router-dom';
 import { CardContent, CardMedia, Container, makeStyles, Typography } from '@material-ui/core';
 
+
+// local styling
 const useStyles = makeStyles((theme) => ({
     cardPoster: {
         height: 333,
@@ -23,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
         color: "white",
     },
     cardMedia: {
-        paddingTop: '10%', // 16:9
+        paddingTop: '10%',
     },
     cardContent: {
         flexGrow: 1,
@@ -31,17 +33,17 @@ const useStyles = makeStyles((theme) => ({
     heading: {
         paddingBottom: theme.spacing(2),
         color: "#F2D600",
-        // font: theme.typography.fontFamily[0],
     }
   }));
 
+
 function MovieList() {
     const classes = useStyles();
-
     const dispatch = useDispatch();
     const history = useHistory();
     const movies = useSelector(store => store.movies);
 
+    // GET all movies from database, will be displayed
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
@@ -54,11 +56,12 @@ function MovieList() {
         <Container className={classes.cardGrid} maxWidth="md">
             <Typography className={classes.heading} variant="h3">Movie List</Typography>
             <Grid container spacing={4}>
+
+            {/* Map through database and display each movie */}
                 {movies.map(movie => {
                     return (
                         <Grid item key={movie.id} xs={12} sm={6} md={4}>
                             <Card className={classes.card}>
-                                
                                 <CardMedia className={classes.cardMedia}>
                                 <img 
                                 src={movie.poster} 
@@ -74,6 +77,7 @@ function MovieList() {
                         </Grid>
                     );
                 })}
+                
             </Grid>
         </Container>
 

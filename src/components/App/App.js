@@ -11,21 +11,12 @@ function App() {
     <div className="App">
       <Router>
         <Header />
-        <Route path="/" exact>
-          <MovieList />
-        </Route>
-
+        <Route path="/" exact component={MovieList} />
         <Switch>
           <Route path="/details/:movieId" children={<MovieDetails />} exact/>
         </Switch>
-        
-        <Route path="/details/edit/:movieId" exact>
-          <EditMovie />
-        </Route>
-
-        <Route path="/addMovie" exact>
-          <AddMovie />
-        </Route>
+        <Route path="/details/edit/:movieId" exact component={EditMovie} />
+        <Route path="/addMovie" exact component={AddMovie} />
       </Router>
     </div>
   );
