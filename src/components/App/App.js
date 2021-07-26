@@ -13,9 +13,9 @@ function App() {
         <Header />
         <Route path="/" exact component={MovieList} />
         <Switch>
-          <Route path="/details/:movieId" children={<MovieDetails />} exact/>
+          <Route path="/details/:movieId" children={<MovieDetails />} />
         </Switch>
-        <Route path="/details/edit/:movieId" exact component={EditMovie} />
+        <Route path="/details/edit/:movieId" component={EditMovie} />
         <Route path="/addMovie" exact component={AddMovie} />
       </Router>
     </div>

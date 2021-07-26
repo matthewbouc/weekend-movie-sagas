@@ -48,7 +48,9 @@ function MovieList() {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
 
+    // On poster click, reset details reducer (so page doesn't flash with old data), push to movie details
     const handleClick = (movieId) => {
+        dispatch({ type: 'SET_MOVIE_DETAILS', payload: {genres: []}})
         history.push(`/details/${movieId}`)
     }
 
