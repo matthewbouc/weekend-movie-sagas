@@ -7,7 +7,7 @@ The goal of this project was to create a movie management application using reac
 
 ## Screen Shot
 
-![Project Screen Shot]()
+![Project Screen Shot](https://github.com/matthewbouc/weekend-movie-sagas/blob/master/public/images/MovieSaga.gif)
 
 ### Prerequisites
 
